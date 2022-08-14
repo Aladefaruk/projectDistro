@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TeamComponent } from './team/team.component';
 import { TestService } from './test.service';
+// import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { TestService } from './test.service';
     TeamComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+ 
   ],
   providers: [TestService],
   bootstrap: [AppComponent]
