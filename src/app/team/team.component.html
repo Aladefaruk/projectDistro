@@ -1,0 +1,7 @@
+<div  class="">
+    <h2>Team {{index + 1}}</h2>
+    <ul class="ui card">
+      <li *ngFor="let m of members">{{ m | uppercase }}</li>
+    </ul>
+    {{currentDate | date }}
+  </div>

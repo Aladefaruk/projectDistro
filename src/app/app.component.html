@@ -1,0 +1,175 @@
+<!-- <div class="container">
+  <div class="ui card">
+    <h1>Team Generator</h1>
+    <ul class="list">
+      <li *ngFor="let m of members">{{ m }}</li>
+    </ul>
+    <div class="add-members-container">
+      <input
+        #addMemberInput
+        type="text"
+        placeholder="Name"
+        (input)="onInput(addMemberInput.value)"
+        [value]="newMember"
+      />
+      <button (click)="addMember()">Add Name</button>
+    </div>
+    <div class="input-container">
+      <input
+        #noofTeams
+        type="number"
+        placeholder="Number of teams"
+        (input)="onInputt(noofTeams.value)"
+        [value]="noTeams"
+      />
+      <button (click)="generateTeams()">Generate</button>
+    </div>
+    <p *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</p>
+  </div>
+
+  <div *ngIf="teams.length">
+    <app-team  *ngFor="let m of teams; let i=index"
+    [members]="m"
+    [index]="i"
+    [Tun]="testService"
+    > 
+    </app-team>
+  </div>
+</div> -->
+<h1 style="text-align: center;">Project Distro</h1>
+<div class=" ui container ui placeholder segment" style="margin:1rem ;">
+<div class="ui two column very relaxed stackable grid">
+  <div class="column">
+  <table class="ui celled table ">
+    <thead>
+      <tr>
+      <th>Employee</th>
+      <th>Role</th>
+      <th>Current Project Start Date</th>
+      <th>Current Project End Date</th>
+    </tr></thead>
+    <tbody>
+      <tr *ngFor="let dev of developers">
+        <td data-label="Name">{{dev.name}}</td>
+        <td data-label="role">{{dev.role}}</td>
+        <td data-label="start date">{{dev.startDateofCurrenProject ? (dev.startDateofCurrenProject | date):"Free"}}</td>
+        <td data-label="end date">{{dev.endDateofCurrenProject ? (dev.endDateofCurrenProject |date) : "Free"}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>
+  <div class="projectDetails column ui form" >
+   
+
+  <div class="">
+    <label> Project Start Date</label>
+    <div  class="ui input " style="margin-left: 1rem">
+    <input
+    #startDate
+    type="date"
+    placeholder="Start Date"
+    (input)="onSDChange(startDate.value)"
+    [value]="startDate"
+    min="2022-08-14"
+    
+  />
+    </div>
+  </div>
+
+  <div>
+    <label> Project End Date</label>
+    <div  class="ui input focus" style="margin: 2rem">
+    <input
+    #endDate
+    type="date"
+    placeholder="Start Date"
+    (input)="onEDChange(endDate.value)"
+    [value]="endDate"
+  />
+    </div>
+  </div>
+
+  <div>
+    <h3>Number of Employees Needed</h3>
+    <div>
+    <label>Front End Developers</label>
+    <div  class="ui input focus"  style="margin: 0.5rem;">
+    <input
+    #FEE
+    type="number"
+    placeholder="No of Frontend devs"
+    (input)="onFEChange(FEE.value)"
+    [value]="FE"
+    class="ui input focus"
+  />
+  </div>
+  </div>
+  
+  <div>
+    <label>Bank End Developers</label>
+    <div  class="ui input focus"  style="margin: 0.5rem;">
+    <input
+    #BEE
+    type="number"
+    placeholder="No Backend devs"
+    (input)="onBEChange(BEE.value)"
+    [value]="BE"
+   
+  />
+  </div>
+  </div>
+  <div >
+    <label>UI Designers</label>
+    <div  class="ui input focus" style="margin: 0.5rem;">
+    <input
+    #UII
+    type="number"
+    placeholder=" No of UI/UX designers"
+    (input)="onUIChange(UII.value)"
+    [value]="UI"
+   
+  />
+    </div>
+  </div>
+
+  </div>
+  <button (click)="checkAvailaibility()" class="buttonn">Generate</button>
+  
+
+  </div>
+  <h4 *ngIf="errorMsg" class="error-msg" style="margin: 2rem;">{{errorMsg}}</h4>
+  <div class="line"></div>
+
+  <div class="result">
+    <div *ngIf="(uiTeam.length || feTeam.length || beTeam.length) && !errorMsg">
+      
+      <h2>Your Team consist of:</h2>
+      <div>
+        <h3>Frontend Dev</h3 >
+          <ul>
+          <li *ngFor="let F of feTeam">{{F.name}}</li>
+          <li *ngIf="newFE>0"> and {{newFE}} contract workers</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Backend Devs</h3 >
+            <ul>
+            <li *ngFor="let F of beTeam">{{F.name}}</li>
+            <li *ngIf="newBE>0"> and {{newBE}} contract workers</li>
+            </ul>
+          </div>
+          <div>
+    <h3>UI/UX Designers</h3 >
+              <ul>
+              <li *ngFor="let F of uiTeam">{{F.name}}</li>
+            <li *ngIf="newUI>0"> and {{newUI}} contract workers</li>
+              </ul>
+            </div>
+       
+    </div>
+    
+
+  </div>
+</div>
+</div>
