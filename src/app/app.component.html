@@ -144,7 +144,7 @@
   <div class="line"></div>
 
   <div class="result">
-    <div *ngIf="(uiTeam.length || feTeam.length || beTeam.length) && !errorMsg">
+    <div *ngIf="((uiTeam.length || feTeam.length || beTeam.length)||(newBE>0||newFE>0||newUI>0)) && !errorMsg">
       
       <h2>Your Team consist of:</h2>
       <div>
